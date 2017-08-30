@@ -2,9 +2,14 @@ var threeItems = [1,2,3];
 //create a function named 'last' that returns the last item from 'threeItems'
 //alert the result of your function
 
-  //code here
+  //code 
 
+function list () {
+	var lastItem = threeItems[threeItems.length-1];
+	alert(lastItem);
+}
 
+list(threeItems);
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
@@ -15,6 +20,9 @@ var evenArray = [1,2,3,6,22,98,45,23,22,12];
 
   //code here
 
+evenArray.filter(function(val) {return val%2 === 0})
+
+//evenArray.filter(val => val % 2===0);
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
@@ -28,6 +36,34 @@ var randomArray = [0,3,4,5,6,7,9,14,17,24,25,26,29,30];
 
   //code here
 
+function checkRandomNumber (arr, cb) {
+	for(var i=0; i<arr.length; i++) {
+		if (arr[i] === cb) {
+			return alert("true " + cb);
+		}
+		return alert("false " + cb);
+	}
+}
+
+checkRandomNumber(randomArray, getRandomArbitrary());
+
+// function checkRandomNumber (arr, val, cb) {
+// 	return cb(arr, val) ? val + "is true" : val + " is false";
+// }
+
+// function checkRandomNumber (arr, val, cb) {
+// 	if (cb(arr, val)) { 
+// 	  return val + " is true"; 
+// 	} else { 
+// 	  return val + " is false" 
+// 	}
+// }
+
+// function check(arr, val) {
+//   return arr.includes(val);
+// }
+
+// checkRandomNumber(randomArray, getRandomArbitrary(), check);
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
@@ -39,9 +75,12 @@ var second;
 
   //code here
 
-alert(first) //[1,2,3,4,5];
-alert(second) //[1,2,3,4,5,6,7];
+second = first.slice();
+second.push(6);
+second.push(7);
 
+alert(first); //[1,2,3,4,5];
+alert(second); //[1,2,3,4,5,6,7];
 
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
@@ -53,6 +92,18 @@ var sentence = "Dev Mountain is the best"
 
   //code here
 
+function longest (sentence) {
+	var split = sentence.split(" ");
+	var tempStr = "";
+	for (var i=0; i<split.length; i++) {
+	  if (split[i].length > tempStr.length) {
+	    tempStr = split[i];
+	  }
+	}
+	return tempStr;
+}
+
+longest(sentence);
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
@@ -64,7 +115,16 @@ var myPoem = 'What is a jQuery but a misunderstood object?'
 
   //code here
 
+function capitalize (str) {
+  var split = str.split(" ");
+  var newStr = [];
+  for (var i=0; i<split.length; i++) {
+    newStr.push(split[i].charAt(0).toUpperCase() + split[i].slice(1));
+  }
+  return newStr.join(" ");
+}
 
+capitalize(myPoem);
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
@@ -72,3 +132,10 @@ var myPoem = 'What is a jQuery but a misunderstood object?'
 
 var theOdyssey = "function expression or function declaration? Tis an obvious choice";
 //Write a function called vowelCounter that takes in a string (theOdyssey) and returns how many vowels are in that string.
+
+function vowelCounter (str) {
+	var count = str.match(/[aeiou]/gi).length;
+	console.log(count);
+}
+
+vowelCounter(theOdyssey);
