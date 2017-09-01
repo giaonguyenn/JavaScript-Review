@@ -11,7 +11,8 @@ var callFriend = function(){
 
   //code here
 
-
+var call = callFriend();
+call("435-215-9248");
 
 /*
 
@@ -20,3 +21,27 @@ Write a function that accepts a function as it's first argument and returns a ne
 Once completed, add a second arguments that allows the function to be executed N number of times. After the function has been called N number of times, console.log('STAHHP');
 
 */
+
+function sayHi () {
+  console.log("hi");
+}
+
+var wut = function(cb, N) {
+  var counter = 0;
+  return function() {
+    if (counter < N) {
+      cb();
+      counter ++;
+    } else {
+      console.log("STAHHP");
+    }
+  };
+};
+
+var leggo = wut(sayHi, 5);
+leggo();
+leggo();
+leggo();
+leggo();
+leggo();
+leggo();

@@ -1,8 +1,11 @@
 /* Declare and Define the functions here that will make the function calls below work properly */
 
-
+var first = function (arr,cb) {
+  return cb(arr[0]);
+}
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
 first(names, function(firstName){
   console.log('The first name in names is ', firstName)
 });
@@ -12,7 +15,9 @@ first(names, function(firstName){
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
+var last=function(arr,cb) {
+  return cb(arr[arr.length-1]);
+}
 
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -27,6 +32,11 @@ last(names, function(lastName){
 
 //have the contains function return a boolean value for if the name is in the array or not.
 
+var contains=function(name,arr,cb){
+  if(arr.indexOf(name)>-1) {
+    return cb(true);
+  } else return cb(false);
+};
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 contains('Colt', names, function(yes){
@@ -43,7 +53,13 @@ contains('Colt', names, function(yes){
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
 
-
+var map = function(arr,cb) {
+  var array=[];
+  for(var i=0; i<arr.length; i++) {
+    array.push(cb(arr[i]));
+  }
+  return array;
+}
 
 var numbers = [1,2,3,4,5];
 //Produces a new array of values by mapping each value in list through a transformation function
@@ -52,11 +68,17 @@ map(numbers, function(num){
 });
 
 
-
-
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
+var uniq=function(arr,cb) {
+  var uniqArr=[];
+  for(var i =0; i<arr.length; i++) {
+    if(uniqArr.indexOf(arr[i]) >= 0) {
 
+    } else uniqArr.push(arr[i]);
+  }
+  return cb(uniqArr);
+};
 
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -65,11 +87,13 @@ uniq(names, function(uniqArr){
 });
 
 
-
-
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
+var each=function(arr,cb){
+  for(var i=0; i<arr.length; i++) {
+    cb(i, arr[i]);
+  }
+};
 
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -82,7 +106,13 @@ each(names, function(item, indice){
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
+var getUserById=function(idNum, obj, cb) {
+  for(var i=0; i<obj.length; i++) {
+    if(users[i].id === idNum) {
+      return cb(users[i]);
+    }
+  }
+};
 
 
 var users = [
@@ -114,7 +144,13 @@ getUserById('16t', users, function(user){
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
+var find=function(arr,cb){
+  for(var i=0; i<arr.length; i++) {
+    if (cb(arr[i])) {
+      return arr[i];
+    }
+  }
+};
 
 
 //Looks through each value in the list, returning the first one that passes a truth test 
